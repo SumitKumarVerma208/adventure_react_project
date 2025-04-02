@@ -14,16 +14,16 @@ function Navbar() {
     const closeMobileMenu = () => {
         setClick(false)
     }
-    const showButton = () =>{
-        if(window.innerWidth <= 960){
+    const showButton = () => {
+        if (window.innerWidth <= 960) {
             setButton(false)
-        }else {
+        } else {
             setButton(true)
         }
     }
     useEffect(() => {
         showButton();
-    },[])
+    }, [])
     window.addEventListener('resize', showButton);
     return (
         <>
@@ -50,6 +50,12 @@ function Navbar() {
                             <Link to='/products' className='nav-links' onClick={closeMobileMenu}>
                                 Products
                             </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to='/login' className='nav-links' onClick={closeMobileMenu}>
+                                Login
+                            </Link>
+
                         </li>
                     </ul>
                     {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}

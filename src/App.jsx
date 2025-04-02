@@ -7,6 +7,7 @@ import Services from "./components/pages/Services.jsx";
 import Products from "./components/pages/Products.jsx";
 import SignUp from "./components/pages/SignUp.jsx";
 import Footer from "./components/Footer.jsx";
+import Login from "./components/pages/Login.jsx";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
                     <Route path='/services' element={<Services/>}/>
                     <Route path='/products' element={<Products/>}/>
                     <Route path='/sign-up' element={<SignUp/>}/>
+                    <Route path='/login' element={<Login/>}/>
                 </Routes>
                 <Footer />
             </Router>

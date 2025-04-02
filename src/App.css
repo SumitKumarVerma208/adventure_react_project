@@ -32,7 +32,7 @@
     background-size: fill;
     background-repeat: no-repeat;
     color: #fff;
-    font-size: 100px;
+    font-size: 55px;
 }
 .login {
     background-image: url('/images/login.jpeg');
@@ -71,7 +71,6 @@
 }
 
 .login-form {
-    width: 50%;
     max-width: 400px;
     background: #fff;
     padding: 20px;
@@ -108,7 +107,6 @@
 }
 
 .signup-form {
-    width: 50%;
     max-width: 400px;
     background: #fff;
     padding: 20px;

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, NavLink, useNavigate} from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/all.min.css"
 import './Navbar.css'
 import {Button} from "./Button.jsx";
@@ -7,7 +7,8 @@ import {Button} from "./Button.jsx";
 function Navbar() {
     const [click, setClick] = useState(false)
     const [button, setButton] = useState(true)
-
+    const navigate = useNavigate();
+    const loggedIn = localStorage.getItem("loggedIn")
     const handleClick = () => {
         setClick(!click)
     }
@@ -25,6 +26,13 @@ function Navbar() {
         showButton();
     }, [])
     window.addEventListener('resize', showButton);
+
+    const handleLogout = () => {
+        localStorage.removeItem("loggedIn");
+        alert("Logged Out!");
+        navigate("/login")
+    }
+
     return (
         <>
             <nav className='navbar'>
@@ -37,28 +45,32 @@ function Navbar() {
                     </div>
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                         <li className='nav-item'>
-                            <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                            <NavLink to='/' className='nav-links' onClick={closeMobileMenu}>
                                 Home
-                            </Link>
+                            </NavLink>
                         </li>
                         <li className='nav-item'>
-                            <Link to='/services' className='nav-links' onClick={closeMobileMenu}>
+                            <NavLink to='/services' className='nav-links' onClick={closeMobileMenu}>
                                 Services
-                            </Link>
+                            </NavLink>
                         </li>
                         <li className='nav-item'>
-                            <Link to='/products' className='nav-links' onClick={closeMobileMenu}>
+                            <NavLink to='/products' className='nav-links' onClick={closeMobileMenu}>
                                 Products
-                            </Link>
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <Link to='/login' className='nav-links' onClick={closeMobileMenu}>
+                            <NavLink to='/login' className='nav-links' onClick={closeMobileMenu}>
                                 Login
-                            </Link>
+                            </NavLink>
 
                         </li>
                     </ul>
                     {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
+                    {
+                        loggedIn ? button && <Button buttonStyle='btn--outline' onClick={handleLogout}>Logout</Button> : ""
+                    }
+
                 </div>
             </nav>
         </>
